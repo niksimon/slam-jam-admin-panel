@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+            rel="stylesheet"
+            id="bootstrap-css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+            integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+            crossorigin="anonymous"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Anton|Roboto"
+            rel="stylesheet"
+        />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="css/admin.css" type="text/css" />
+        <title>Admin Panel</title>
+    </head>
+    <body>
+        <div class="modal-box modal-update-box" id="modal-update-box">
+            <div class="modal-box-inner">
+                <div class="modal-box-header">
+                    <div class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="modal-box-content">
+                    <div class="data-form">
+                        <h3 id="form-title"></h3>
+                        <div class="alert alert-danger" id="form-errors">
+                            <a
+                                href="#"
+                                class="close"
+                                data-hide="alert"
+                                id="hide-form-errors"
+                                aria-label="close"
+                                >&times;</a
+                            >
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-confirm" id="modal-confirm">
+                    <a
+                        id="modal-confirm-yes"
+                        href="#"
+                        data-operation=""
+                        class="btn btn-primary"
+                        >Save</a
+                    >
+                    <a id="modal-confirm-no" class="btn btn-danger">Cancel</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-container">
+            <div class="menu-container">
+                <div class="menu">
+                    <h2 class="title">
+                        <a href="#">SLAM JAM</a>
+                    </h2>
+                    <h3 class="sub-title">ADMIN PANEL</h3>
+                    <p class="dashboards-title">DASHBOARDS</p>
+                    <ul class="admin-menu-list">
+                        <li><a href="index.html">Overview</a></li>
+                        <li class="active"><a href="users.html">Users</a></li>
+                        <li><a href="#">Game jams</a></li>
+                        <li><a href="#">Game submissions</a></li>
+                        <li><a href="#">Game categories</a></li>
+                        <li><a href="#">Game criteria</a></li>
+                        <li><a href="#">Image categories</a></li>
+                        <li><a href="#">Navigations</a></li>
+                        <li><a href="#">Polls</a></li>
+                        <li><a href="#">Roles</a></li>
+                        <li><a href="#">Reports</a></li>
+                        <li><a href="#">Platforms</a></li>
+                    </ul>
+                </div>
+                <div class="menu-open">
+                    <span></span>
+                    <a href="#" class="admin-log-out">
+                        <i class="fas fa-sign-out-alt has-tooltip"
+                            ><i class="tooltip">Log out</i></i
+                        >
+                    </a>
+                </div>
+            </div>
+            <div class="main-content">
+                <h2>Overview</h2>
+                <div class="main-commands">
+                    <a href="#" id="createNew" class="has-tooltip"><i class="fas fa-plus"></i><span class="tooltip">Create new</span></a>
+                    <a href="#" id="deleteSelected" class="has-tooltip"><i class="fas fa-trash-alt"></i><span class="tooltip">Delete selected</span></a>
+                </div>
+                <div class="content" id="content">
+                    <table class="main-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <label class="checkbox-cell">
+                                        <input type="checkbox" id="chbSelectAll"/>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </th>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>E-mail</th>
+                                <th class="text-center">Avatar</th>
+                                <th>Created at</th>
+                                <th>Updated at</th>
+                                <th class="text-center">Banned</th>
+                                <th class="text-center">Roles</th>
+                                <th class="text-center">Edit</th>
+                                <th class="text-center">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-id="">
+                                <td>
+                                    <label class="checkbox-cell">
+                                        <input type="checkbox" class="chb-select-row" data-id=""/>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td class="table-cell-id">1</td>
+                                <td>Simon</td>
+                                <td>simon@niksimon.com</td>
+                                <td class="data-user-image text-center"><img src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortRound&accessoriesType=Prescription02&hairColor=Auburn&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue02&eyeType=Dizzy&eyebrowType=RaisedExcitedNatural&mouthType=Disbelief&skinColor=Brown" alt="User image"/></td>
+                                <td class="data-date">24.08.2020</td>
+                                <td class="data-date">24.08.2020</td>
+                                <td class="text-center">No</td>
+                                <td class="data-user-role text-center">
+                                    <i class="fas fa-user-cog has-tooltip" data-role=""><span class="tooltip">Administrator</span></i>
+                                    <i class="fas fa-user-tie has-tooltip" data-role=""><span class="tooltip">Jam maker</span></i>
+                                    <i class="fas fa-user-astronaut has-tooltip" data-role=""><span class="tooltip">Game developer</span></i>
+                                    <i class="fas fa-user has-tooltip" title="User"><span class="tooltip tooltip-small">User</span></i>
+                                </td>
+                                <td class="data-edit text-center"><a href="#" data-id=""><i class="far fa-edit"></i></a></td>
+                                <td class="data-delete text-center"><a href="#" data-id=""><i class="fas fa-trash-alt"></i></a></td>
+                            </tr>
+                            <tr data-id="">
+                                <td>
+                                    <label class="checkbox-cell">
+                                        <input type="checkbox" class="chb-select-row" data-id=""/>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td class="table-cell-id">1</td>
+                                <td>John</td>
+                                <td>john@gmail.com</td>
+                                <td class="data-user-image text-center"><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription01&hairColor=BrownDark&facialHairType=MoustacheFancy&facialHairColor=Platinum&clotheType=CollarSweater&clotheColor=Blue03&eyeType=Squint&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Tanned'
+                                    /></td>
+                                <td class="data-date">24.08.2020</td>
+                                <td class="data-date">24.08.2020</td>
+                                <td class="text-center">No</td>
+                                <td class="data-user-role text-center">
+                                    <i class="fas fa-user-cog has-tooltip" data-role=""><span class="tooltip">Administrator</span></i>
+                                    <i class="fas fa-user-astronaut has-tooltip" data-role=""><span class="tooltip">Game developer</span></i>
+                                    <i class="fas fa-user has-tooltip" title="User"><span class="tooltip tooltip-small">User</span></i>
+                                </td>
+                                <td class="data-edit text-center"><a href="#" data-id=""><i class="far fa-edit"></i></a></td>
+                                <td class="data-delete text-center"><a href="#" data-id=""><i class="fas fa-trash-alt"></i></a></td>
+                            </tr>
+                            <tr data-id="">
+                                <td>
+                                    <label class="checkbox-cell">
+                                        <input type="checkbox" class="chb-select-row" data-id=""/>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td class="table-cell-id">1</td>
+                                <td>Jack</td>
+                                <td>jack@gmail.com</td>
+                                <td class="data-user-image text-center"><img src='https://avataaars.io/?avatarStyle=Transparent&topType=WinterHat2&accessoriesType=Wayfarers&hatColor=PastelYellow&hairColor=BrownDark&facialHairType=MoustacheFancy&facialHairColor=Red&clotheType=BlazerSweater&clotheColor=PastelYellow&eyeType=EyeRoll&eyebrowType=UnibrowNatural&mouthType=Concerned&skinColor=Light'
+                                    /></td>
+                                <td class="data-date">24.08.2020</td>
+                                <td class="data-date">24.08.2020</td>
+                                <td class="text-center">No</td>
+                                <td class="data-user-role text-center">
+                                    <i class="fas fa-user-cog has-tooltip" data-role=""><span class="tooltip">Administrator</span></i>
+                                    <i class="fas fa-user has-tooltip" title="User"><span class="tooltip tooltip-small">User</span></i>
+                                </td>
+                                <td class="data-edit text-center"><a href="#" data-id=""><i class="far fa-edit"></i></a></td>
+                                <td class="data-delete text-center"><a href="#" data-id=""><i class="fas fa-trash-alt"></i></a></td>
+                            </tr>
+                            <tr data-id="">
+                                <td>
+                                    <label class="checkbox-cell">
+                                        <input type="checkbox" class="chb-select-row" data-id=""/>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td class="table-cell-id">1</td>
+                                <td>Betty</td>
+                                <td>betty@gmail.com</td>
+                                <td class="data-user-image text-center"><img src='https://avataaars.io/?avatarStyle=Transparent&topType=LongHairFrida&accessoriesType=Prescription02&hatColor=Gray01&facialHairType=MoustacheFancy&facialHairColor=Red&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Dizzy&eyebrowType=Default&mouthType=Serious&skinColor=DarkBrown'
+                                    /></td>
+                                <td class="data-date">24.08.2020</td>
+                                <td class="data-date">24.08.2020</td>
+                                <td class="text-center">No</td>
+                                <td class="data-user-role text-center">
+                                    <i class="fas fa-user has-tooltip" title="User"><span class="tooltip tooltip-small">User</span></i>
+                                </td>
+                                <td class="data-edit text-center"><a href="#" data-id=""><i class="far fa-edit"></i></a></td>
+                                <td class="data-delete text-center"><a href="#" data-id=""><i class="fas fa-trash-alt"></i></a></td>
+                            </tr>
+                            <tr data-id="">
+                                <td>
+                                    <label class="checkbox-cell">
+                                        <input type="checkbox" class="chb-select-row" data-id=""/>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td class="table-cell-id">1</td>
+                                <td>Thor</td>
+                                <td>thor@gmail.com</td>
+                                <td class="data-user-image text-center"><img src='https://avataaars.io/?avatarStyle=Transparent&topType=WinterHat4&accessoriesType=Sunglasses&hatColor=Blue02&facialHairType=MoustacheMagnum&facialHairColor=BrownDark&clotheType=ShirtScoopNeck&clotheColor=Blue02&eyeType=Side&eyebrowType=Default&mouthType=Twinkle&skinColor=Light'
+                                    /></td>
+                                <td class="data-date">24.08.2020</td>
+                                <td class="data-date">24.08.2020</td>
+                                <td class="text-center">No</td>
+                                <td class="data-user-role text-center">
+                                    <i class="fas fa-user-astronaut has-tooltip" data-role=""><span class="tooltip">Game developer</span></i>
+                                    <i class="fas fa-user has-tooltip" title="User"><span class="tooltip tooltip-small">User</span></i>
+                                </td>
+                                <td class="data-edit text-center"><a href="#" data-id=""><i class="far fa-edit"></i></a></td>
+                                <td class="data-delete text-center"><a href="#" data-id=""><i class="fas fa-trash-alt"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+        <script src="js/admin.js"></script>
+    </body>
+</html>

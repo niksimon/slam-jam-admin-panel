@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+            rel="stylesheet"
+            id="bootstrap-css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+            integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+            crossorigin="anonymous"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Anton|Roboto"
+            rel="stylesheet"
+        />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="css/admin.css" type="text/css" />
+        <title>Admin Panel</title>
+    </head>
+    <body>
+        <div class="modal-box modal-update-box" id="modal-update-box">
+            <div class="modal-box-inner">
+                <div class="modal-box-header">
+                    <div class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="modal-box-content">
+                    <div class="data-form">
+                        <h3 id="form-title"></h3>
+                        <div class="alert alert-danger" id="form-errors">
+                            <a
+                                href="#"
+                                class="close"
+                                data-hide="alert"
+                                id="hide-form-errors"
+                                aria-label="close"
+                                >&times;</a
+                            >
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-confirm" id="modal-confirm">
+                    <a
+                        id="modal-confirm-yes"
+                        href="#"
+                        data-operation=""
+                        class="btn btn-primary"
+                        >Save</a
+                    >
+                    <a id="modal-confirm-no" class="btn btn-danger">Cancel</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-container">
+            <div class="menu-container">
+                <div class="menu">
+                    <h2 class="title">
+                        <a href="#">SLAM JAM</a>
+                    </h2>
+                    <h3 class="sub-title">ADMIN PANEL</h3>
+                    <p class="dashboards-title">DASHBOARDS</p>
+                    <ul class="admin-menu-list">
+                        <li class="active"><a href="index.html">Overview</a></li>
+                        <li><a href="users.html">Users</a></li>
+                        <li><a href="#">Game jams</a></li>
+                        <li><a href="#">Game submissions</a></li>
+                        <li><a href="#">Game categories</a></li>
+                        <li><a href="#">Game criteria</a></li>
+                        <li><a href="#">Image categories</a></li>
+                        <li><a href="#">Navigations</a></li>
+                        <li><a href="#">Polls</a></li>
+                        <li><a href="#">Roles</a></li>
+                        <li><a href="#">Reports</a></li>
+                        <li><a href="#">Platforms</a></li>
+                    </ul>
+                </div>
+                <div class="menu-open">
+                    <span></span>
+                    <a href="#" class="admin-log-out">
+                        <i class="fas fa-sign-out-alt has-tooltip"
+                            ><i class="tooltip">Log out</i></i
+                        >
+                    </a>
+                </div>
+            </div>
+            <div class="main-content">
+                <h2>Overview</h2>
+                <div class="content" id="content">
+                    <!-- cards -->
+                    <div class="row">
+                        <!-- users -->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5 col-md-4">
+                                            <div
+                                                class="icon-big text-center icon-warning"
+                                            >
+                                                <i
+                                                    class="far fa-user"
+                                                    style="color: #8eb8e5"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 col-md-8">
+                                            <div class="numbers">
+                                                <p class="card-category">
+                                                    Users
+                                                </p>
+                                                <p
+                                                    class="card-title"
+                                                    id="stats_count_users"
+                                                >
+                                                    0
+                                                </p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <hr />
+
+                                    <div class="stats">
+                                        <div class="row">
+                                            <div
+                                                class="col-md-8"
+                                                style="padding-right: 0px"
+                                            >
+                                                <span id="stats_chart_users"
+                                                    >Loading..</span
+                                                >
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a
+                                                    href="./users.html"
+                                                    class="pull-right"
+                                                >
+                                                    <i
+                                                        class="fa fa-arrow-circle-right"
+                                                    ></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- game jams -->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5 col-md-4">
+                                            <div
+                                                class="icon-big text-center icon-warning"
+                                            >
+                                                <i
+                                                    class="fa fa-cube"
+                                                    style="color: #a1e8cc"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 col-md-8">
+                                            <div class="numbers">
+                                                <p class="card-category">
+                                                    Game Jams
+                                                </p>
+                                                <p
+                                                    class="card-title"
+                                                    id="stats_count_gamejams"
+                                                >
+                                                    0
+                                                </p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <div class="row">
+                                            <div
+                                                class="col-md-8"
+                                                style="padding-right: 0px"
+                                            >
+                                                <span id="stats_chart_gamejams"
+                                                    >Loading..</span
+                                                >
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a
+                                                    href="./game-jams.html"
+                                                    class="pull-right"
+                                                >
+                                                    <i
+                                                        class="fa fa-arrow-circle-right"
+                                                    ></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- game submissions -->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5 col-md-4">
+                                            <div
+                                                class="icon-big text-center icon-warning"
+                                            >
+                                                <i
+                                                    class="fa fa-gamepad"
+                                                    style="color: #ea638c"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 col-md-8">
+                                            <div class="numbers">
+                                                <p class="card-category">
+                                                    Games
+                                                </p>
+                                                <p
+                                                    class="card-title"
+                                                    id="stats_count_games"
+                                                >
+                                                    0
+                                                </p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <div class="row">
+                                            <div
+                                                class="col-md-8"
+                                                style="padding-right: 0px"
+                                            >
+                                                <span id="stats_chart_games"
+                                                    >Loading..</span
+                                                >
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a
+                                                    href="./game-submissions.html"
+                                                    class="pull-right"
+                                                >
+                                                    <i
+                                                        class="fa fa-arrow-circle-right"
+                                                    ></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- reports -->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5 col-md-4">
+                                            <div
+                                                class="icon-big text-center icon-warning"
+                                            >
+                                                <i
+                                                    class="far fa-flag"
+                                                    style="color: #fb8b24"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 col-md-8">
+                                            <div class="numbers">
+                                                <p class="card-category">
+                                                    Reports
+                                                </p>
+                                                <p
+                                                    class="card-title"
+                                                    id="stats_count_reports"
+                                                >
+                                                    0
+                                                </p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <div class="row">
+                                            <div
+                                                class="col-md-8"
+                                                style="padding-right: 0px"
+                                            >
+                                                <span id="stats_chart_reports"
+                                                    >Loading..</span
+                                                >
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a
+                                                    href="./reports.html"
+                                                    class="pull-right"
+                                                >
+                                                    <i
+                                                        class="fa fa-arrow-circle-right"
+                                                    ></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <hr class="sick" />
+                    <br />
+
+                    <div class="row">
+                        <!-- comments -->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5 col-md-4">
+                                            <div
+                                                class="icon-big text-center icon-warning"
+                                            >
+                                                <i
+                                                    class="far fa-comments"
+                                                    style="color: #f865b0"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 col-md-8">
+                                            <div class="numbers">
+                                                <p class="card-category">
+                                                    Comments
+                                                </p>
+                                                <p
+                                                    class="card-title"
+                                                    id="stats_count_comments"
+                                                >
+                                                    0
+                                                </p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <div class="row">
+                                            <div
+                                                class="col-md-8"
+                                                style="padding-right: 0px"
+                                            >
+                                                <span id="stats_chart_comments"
+                                                    >Loading..</span
+                                                >
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- download files -->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5 col-md-4">
+                                            <div
+                                                class="icon-big text-center icon-warning"
+                                            >
+                                                <i
+                                                    class="far fa-file"
+                                                    style="color: #09e85e"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 col-md-8">
+                                            <div class="numbers">
+                                                <p class="card-category">
+                                                    Download files
+                                                </p>
+                                                <p
+                                                    class="card-title"
+                                                    id="stats_count_downloadfiles"
+                                                >
+                                                    0
+                                                </p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <div class="row">
+                                            <div
+                                                class="col-md-8"
+                                                style="padding-right: 0px"
+                                            >
+                                                <span
+                                                    id="stats_chart_downloadfiles"
+                                                    >Loading..</span
+                                                >
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- images -->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5 col-md-4">
+                                            <div
+                                                class="icon-big text-center icon-warning"
+                                            >
+                                                <i
+                                                    class="far fa-images"
+                                                    style="color: #db504a"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 col-md-8">
+                                            <div class="numbers">
+                                                <p class="card-category">
+                                                    Images
+                                                </p>
+                                                <p
+                                                    class="card-title"
+                                                    id="stats_count_images"
+                                                >
+                                                    0
+                                                </p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <div class="row">
+                                            <div
+                                                class="col-md-8"
+                                                style="padding-right: 0px"
+                                            >
+                                                <span id="stats_chart_images"
+                                                    >Loading..</span
+                                                >
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- polls -->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5 col-md-4">
+                                            <div
+                                                class="icon-big text-center icon-warning"
+                                            >
+                                                <i
+                                                    class="fas fa-clipboard-list"
+                                                    style="color: #e7efc5"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 col-md-8">
+                                            <div class="numbers">
+                                                <p class="card-category">
+                                                    Polls
+                                                </p>
+                                                <p
+                                                    class="card-title"
+                                                    id="stats_count_polls"
+                                                >
+                                                    0
+                                                </p>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <div class="row">
+                                            <div
+                                                class="col-md-8"
+                                                style="padding-right: 0px"
+                                            >
+                                                <span id="stats_chart_polls"
+                                                    >Loading..</span
+                                                >
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+        <script src="js/admin.js"></script>
+    </body>
+</html>
